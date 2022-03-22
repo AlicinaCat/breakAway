@@ -1,0 +1,42 @@
+﻿@model BreakAway.Models.Contact.EditViewModel
+
+@{ 
+    ViewBag.Title = "Edit";
+}
+
+@Html.ActionLink("Back to contact list", "Index")
+
+@if (!string.IsNullOrEmpty(ViewBag.message))
+{
+    <p>@ViewBag.message</p>
+}
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(p => p.Id)
+    @Html.AntiForgeryToken();
+    <fieldset>
+        <legend>Contact Information</legend>
+        <div>
+            @Html.LabelFor(p => p.Title, labelText: "Title")
+            @Html.TextBoxFor(p => p.Title)
+        </div>
+        <div>
+            @Html.LabelFor(p => p.FirstName, labelText: "First name:")
+            @Html.TextBoxFor(p => p.FirstName)
+        </div>
+        <div>
+            @Html.LabelFor(p => p.LastName, labelText: "Last name:")
+            @Html.TextBoxFor(p => p.LastName);
+        </div>
+        <div>
+            @Html.LabelFor(p => p.AddDate, labelText: "Add date:")
+            @Html.DisplayFor(p => p.AddDate)
+        </div>
+        <div>
+            @Html.LabelFor(p => p.ModifiedDate, labelText: "Modified date:")
+            @Html.DisplayFor(p => p.ModifiedDate)
+        </div>
+    </fieldset>
+    <input type="submit" value="Save" />
+}

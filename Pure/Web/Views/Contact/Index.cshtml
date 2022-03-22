@@ -1,0 +1,32 @@
+﻿@model BreakAway.Models.Contact.IndexViewModel
+
+@{
+    ViewBag.Title = "Contacts";
+}
+
+@if (!string.IsNullOrEmpty(ViewBag.message))
+{
+    <p>@ViewBag.message</p>
+}
+
+<table>
+    <tr>
+        <th></th>
+        <th>Title</th>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Add Date</th>
+        <th>Add Modified</th>
+    </tr>
+    @foreach (var contact in Model.Contacts)
+    {
+        <tr>
+            <td>@Html.ActionLink("Details", "Edit", new { id = contact.Id })</td>
+            <td>@contact.Title</td>
+            <td>@contact.FirstName</td>
+            <td>@contact.LastName</td>
+            <td>@contact.AddDate</td>
+            <td>@contact.ModifiedDate</td>
+        </tr>
+    }
+</table>
