@@ -93,5 +93,11 @@ namespace BreakAway.Controllers
 
             return RedirectToAction("Edit", "Contact", new { id = contact.Id, message = "Changes saved successfully" });
         }
+
+        public ActionResult Add()
+        {
+            var viewModel = new AddViewModel();
+            return View(viewModel);
+        }
     }
 }

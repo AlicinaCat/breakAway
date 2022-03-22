@@ -1,0 +1,32 @@
+﻿@model BreakAway.Models.Contact.AddViewModel
+
+@{ 
+    ViewBag.Title = "Add";
+}
+
+@if (!string.IsNullOrEmpty(ViewBag.message))
+{
+    <p>@ViewBag.message</p>
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken();
+    @Html.HiddenFor(p => p.Id)
+    <fieldset>
+        <legend>Contact information</legend>
+        <div>
+            @Html.LabelFor(p => p.FirstName, labelText: "First name:")
+            @Html.TextBoxFor(p => p.FirstName)
+        </div>
+        <div>
+            @Html.LabelFor(p => p.LastName, labelText: "Last name:")
+            @Html.TextBoxFor(p => p.LastName)
+        </div>
+        <div>
+            @Html.LabelFor(p => p.Title, labelText: "Title:")
+            @Html.TextBoxFor(p => p.Title)
+        </div>
+    </fieldset>
+    <input type="submit" value="Save" />
+}
